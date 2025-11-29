@@ -2,8 +2,10 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Gamepad2, Users, TrendingUp, Presentation } from "lucide-react";
 import gameBoard from "@/assets/game-board.jpg";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const GamesSection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const games = [
     {
       id: "game1",
@@ -66,7 +68,7 @@ const GamesSection = () => {
   ];
 
   return (
-    <section id="games" className="relative py-20 bg-secondary">
+    <section id="games" className="relative py-20 bg-secondary overflow-hidden">
       <div 
         className="absolute inset-0 opacity-10"
         style={{
@@ -76,8 +78,12 @@ const GamesSection = () => {
         }}
       />
       
-      <div className="container relative z-10 px-6">
-        <div className="mb-12 text-center">
+      {/* Animated gradient overlays */}
+      <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-neon-blue/10 blur-[150px] animate-pulse" />
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-primary/10 blur-[150px] animate-pulse" style={{ animationDelay: "2s" }} />
+      
+      <div className="container relative z-10 px-6" ref={ref}>
+        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-4 text-4xl font-bold text-secondary-foreground md:text-5xl">
             The Four <span className="text-neon-blue glow-neon-blue">CTMRL</span> Games
           </h2>
@@ -86,13 +92,13 @@ const GamesSection = () => {
           </p>
         </div>
         
-        <Tabs defaultValue="game1" className="w-full">
+        <Tabs defaultValue="game1" className={`w-full transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
           <TabsList className="mb-8 grid w-full grid-cols-2 gap-4 bg-transparent lg:grid-cols-4">
             {games.map((game, idx) => (
               <TabsTrigger 
                 key={game.id} 
                 value={game.id}
-                className="data-[state=active]:bg-card data-[state=active]:text-card-foreground"
+                className="data-[state=active]:bg-card data-[state=active]:text-card-foreground data-[state=active]:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 hover-scale"
               >
                 <game.icon className="mr-2 h-4 w-4" />
                 Game {idx + 1}
@@ -101,10 +107,10 @@ const GamesSection = () => {
           </TabsList>
           
           {games.map((game) => (
-            <TabsContent key={game.id} value={game.id}>
-              <Card className="border-border/50 bg-card p-8 md:p-12">
+            <TabsContent key={game.id} value={game.id} className="animate-fade-in">
+              <Card className="border-border/50 bg-card p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.3)] hover:shadow-[0_0_70px_rgba(139,92,246,0.2)] transition-all duration-500">
                 <div className="mb-6">
-                  <game.icon className={`mb-4 h-12 w-12 ${game.color}`} />
+                  <game.icon className={`mb-4 h-12 w-12 ${game.color} animate-fade-in`} />
                   <h3 className="mb-2 text-3xl font-bold">{game.title}</h3>
                   <p className="text-lg text-muted-foreground">{game.subtitle}</p>
                 </div>

@@ -1,100 +1,77 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const ClosingSection = () => {
-  const crustStory = [
-    {
-      phase: "Context",
-      content: "Entered with uncertainty about my ability to lead revenue conversations"
-    },
-    {
-      phase: "Remove",
-      content: "Removed old narratives about sales being pushy or inauthentic"
-    },
-    {
-      phase: "Unusual",
-      content: "A course that teaches through games, adrenaline, and industry realism"
-    },
-    {
-      phase: "Show",
-      content: "How I changed — confidence, storytelling, presence, strategy, intentionality"
-    },
-    {
-      phase: "Twist",
-      content: "Revenue leadership is not about selling — it's about shaping reality"
-    }
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
+  const storyPoints = [
+    { phase: "Context", description: "Entered with uncertainty about my ability to lead revenue conversations" },
+    { phase: "Remove", description: "Removed old narratives about sales being pushy or inauthentic" },
+    { phase: "Unusual", description: "A course that teaches through games, adrenaline, and industry realism" },
+    { phase: "Show", description: "How I changed — confidence, storytelling, presence, strategy, intentionality" },
+    { phase: "Twist", description: "Revenue leadership is not about selling — it's about shaping reality" }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary">
-      <div className="container px-6">
-        <div className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber/20 bg-amber/10 px-4 py-2">
-            <Sparkles className="h-4 w-4 text-amber" />
-            <span className="text-sm font-semibold text-amber">The CRUST Framework in Action</span>
-          </div>
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-            My <span className="text-primary">Transformation</span> Story
-          </h2>
-        </div>
-        
-        <div className="mx-auto mb-12 max-w-4xl">
-          <Card className="border-primary/30 bg-card p-8 md:p-12">
-            <div className="space-y-6">
-              {crustStory.map((item, idx) => (
-                <div key={idx} className="flex gap-6">
-                  <div className="flex flex-col items-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                      {item.phase[0]}
-                    </div>
-                    {idx < crustStory.length - 1 && (
-                      <div className="w-0.5 flex-1 bg-primary/30 mt-2" style={{ minHeight: '40px' }} />
-                    )}
-                  </div>
-                  <div className="flex-1 pb-8">
-                    <h3 className="mb-2 text-xl font-bold text-primary">{item.phase}</h3>
-                    <p className="text-lg leading-relaxed text-muted-foreground">{item.content}</p>
-                  </div>
-                </div>
-              ))}
+    <section id="closing" className="relative py-20 bg-gradient-to-b from-muted/30 to-secondary overflow-hidden">
+      {/* Glowing background elements */}
+      <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary/20 blur-[150px] animate-pulse" />
+      <div className="absolute bottom-20 right-1/4 h-96 w-96 rounded-full bg-neon-blue/20 blur-[150px] animate-pulse" style={{ animationDelay: "1s" }} />
+      
+      <div className="container relative px-6" ref={ref}>
+        <Card className={`mx-auto max-w-4xl border-neon-blue/30 bg-card p-8 md:p-12 shadow-[0_0_100px_rgba(56,189,248,0.2)] transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
+          <div className="mb-8 text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-blue/30 bg-neon-blue/10 px-4 py-2 backdrop-blur-sm">
+              <Sparkles className="h-4 w-4 text-neon-blue animate-pulse" />
+              <span className="text-sm font-semibold text-neon-blue">Limited Seats Available</span>
             </div>
-          </Card>
-        </div>
-        
-        <div className="mx-auto max-w-3xl rounded-2xl border border-neon-blue/30 bg-secondary p-12 text-center text-secondary-foreground shadow-2xl">
-          <h3 className="mb-6 text-3xl font-bold md:text-4xl">
-            Your Six-Week Time Machine Starts Here
-          </h3>
-          <p className="mb-8 text-lg text-muted-foreground">
-            If you want to think sharper, speak stronger, and lead revenue like a professional — 
-            this is your moment.
-          </p>
-          <Button 
-            size="lg"
-            className="group bg-neon-blue text-secondary hover:bg-neon-blue/90 hover:glow-neon-blue text-lg px-8 py-6 transition-all duration-300"
-          >
-            Start Your Transformation
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Button>
+            
+            <h2 className="mb-4 text-4xl font-bold md:text-5xl">
+              Your Time Machine <span className="text-neon-blue glow-neon-blue">Starts Here</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">My transformation through the CRUST framework</p>
+          </div>
           
-          <div className="mt-8 flex items-center justify-center gap-8 text-sm">
-            <div>
-              <div className="font-mono text-2xl font-bold text-neon-blue">6</div>
-              <div className="text-muted-foreground">Weeks</div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div>
-              <div className="font-mono text-2xl font-bold text-amber">4</div>
-              <div className="text-muted-foreground">Games</div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div>
-              <div className="font-mono text-2xl font-bold text-primary">∞</div>
-              <div className="text-muted-foreground">Impact</div>
-            </div>
+          <div className="space-y-6">
+            {storyPoints.map((point, idx) => (
+              <div 
+                key={idx} 
+                className={`group rounded-lg border border-border/50 bg-muted/30 p-6 transition-all duration-500 hover:border-primary/50 hover:bg-muted/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)] hover-scale ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+                style={{ animationDelay: `${0.2 + idx * 0.1}s` }}
+              >
+                <div className="mb-2 flex items-center gap-3">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary transition-all group-hover:scale-110 group-hover:bg-primary/30">
+                    {idx + 1}
+                  </div>
+                  <h3 className="font-semibold">{point.phase}</h3>
+                </div>
+                <p className="text-muted-foreground">{point.description}</p>
+              </div>
+            ))}
           </div>
-        </div>
+          
+          <div className={`mt-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.8s" }}>
+            <div className="mb-6 rounded-lg border border-amber/30 bg-gradient-to-r from-amber/5 via-amber/10 to-amber/5 p-6 shadow-[0_0_30px_rgba(251,191,36,0.15)]">
+              <p className="text-xl font-bold">
+                "If you want to think sharper, speak stronger, and lead revenue like a professional — your six-week time machine starts here."
+              </p>
+            </div>
+            
+            <Button 
+              size="lg" 
+              className="group relative bg-neon-blue text-secondary hover:bg-neon-blue/90 shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:shadow-[0_0_60px_rgba(56,189,248,0.6)] transition-all duration-300 hover-scale"
+            >
+              <span className="relative z-10 flex items-center">
+                <Mail className="mr-2 h-5 w-5" />
+                Enroll in CTMRL Today
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </span>
+              <div className="absolute inset-0 rounded-md bg-gradient-to-r from-neon-blue to-primary opacity-0 group-hover:opacity-100 blur transition-opacity" />
+            </Button>
+          </div>
+        </Card>
       </div>
     </section>
   );
