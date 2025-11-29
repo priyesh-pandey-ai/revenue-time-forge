@@ -2,8 +2,10 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ValueProposition from "@/components/ValueProposition";
 import ProfessorSection from "@/components/ProfessorSection";
+import FrameworksSection from "@/components/FrameworksSection";
 import IndustryInsights from "@/components/IndustryInsights";
 import GamesSection from "@/components/GamesSection";
+import CaseStudySection from "@/components/CaseStudySection";
 import TransformationSection from "@/components/TransformationSection";
 import ROISection from "@/components/ROISection";
 import ObjectionHandling from "@/components/ObjectionHandling";
@@ -18,8 +20,10 @@ const Index = () => {
         <HeroSection />
         <ValueProposition />
         <ProfessorSection />
+        <FrameworksSection />
         <IndustryInsights />
         <GamesSection />
+        <CaseStudySection />
         <div id="transformation">
           <TransformationSection />
         </div>
