@@ -16,6 +16,7 @@ const Navigation = () => {
 
   const navItems = [
     { label: "Value", href: "#value" },
+    { label: "Frameworks", href: "#frameworks" },
     { label: "Games", href: "#games" },
     { label: "Transformation", href: "#transformation" },
     { label: "ROI", href: "#roi" }
