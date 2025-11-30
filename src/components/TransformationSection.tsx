@@ -1,7 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Sparkles } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const TransformationSection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const transformations = [
     "I can now read clients with clarity and empathy",
     "My objection handling improved: distinguish honest vs loaded",
@@ -15,9 +17,10 @@ const TransformationSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-muted/30 to-background">
-      <div className="container px-6">
-        <div className="mb-12 text-center">
+    <section className="py-20 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/10 blur-[200px] animate-pulse" />
+      <div className="container px-6 relative z-10" ref={ref}>
+        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2">
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-sm font-semibold text-primary">Personal Journey</span>
@@ -30,8 +33,8 @@ const TransformationSection = () => {
           </p>
         </div>
         
-        <div className="mx-auto max-w-4xl">
-          <Card className="border-primary/30 bg-card p-8 md:p-12">
+        <div className={`mx-auto max-w-4xl transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
+          <Card className="border-primary/30 bg-card p-8 md:p-12 hover-glow">
             <div className="space-y-6">
               {transformations.map((transformation, idx) => (
                 <div key={idx} className="flex gap-4 items-start">

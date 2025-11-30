@@ -1,7 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { TrendingUp, Brain, Target, Heart } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const ROISection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const tangibleROI = [
     { icon: Brain, label: "Frameworks Applied", value: "8-step proposal model, CRUST, MAYA, waterfall visualization" },
     { icon: Target, label: "Career Acceleration", value: "Interview-ready stories, leadership presence, strategic thinking" },
@@ -17,9 +19,10 @@ const ROISection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container px-6">
-        <div className="mb-12 text-center">
+    <section className="py-20 bg-background relative overflow-hidden">
+      <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-amber/10 blur-[150px] animate-pulse" />
+      <div className="container px-6 relative z-10" ref={ref}>
+        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-4 text-4xl font-bold md:text-5xl">
             <span className="text-amber">ROI</span> for Future Students
           </h2>
@@ -28,17 +31,17 @@ const ROISection = () => {
           </p>
         </div>
         
-        <div className="mb-12 grid gap-6 md:grid-cols-3">
+        <div className={`mb-12 grid gap-6 md:grid-cols-3 transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
           {tangibleROI.map((item, idx) => (
-            <Card key={idx} className="border-border/50 p-6 transition-all duration-300 hover:border-amber/50 hover:shadow-lg">
-              <item.icon className="mb-4 h-10 w-10 text-amber" />
+            <Card key={idx} className="border-border/50 p-6 hover-glow">
+              <item.icon className="mb-4 h-12 w-12 text-amber animate-float" />
               <h3 className="mb-3 text-xl font-semibold">{item.label}</h3>
               <p className="text-sm text-muted-foreground">{item.value}</p>
             </Card>
           ))}
         </div>
         
-        <Card className="border-primary/20 bg-gradient-to-br from-card to-primary/5 p-8 md:p-12">
+        <Card className={`border-primary/20 bg-gradient-to-br from-card to-primary/5 p-8 md:p-12 transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
           <div className="grid gap-8 md:grid-cols-2">
             <div>
               <h3 className="mb-6 flex items-center gap-2 text-2xl font-bold">
