@@ -88,7 +88,7 @@ const GamesSection = () => {
       
       <div className="container relative z-10 px-6" ref={ref}>
         <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="mb-4 text-4xl font-bold text-secondary-foreground md:text-5xl">
+          <h2 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
             The Four <span className="text-gradient animate-glow">CTMRL</span> Games
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -114,27 +114,27 @@ const GamesSection = () => {
                         <div className="mb-2 text-sm font-mono font-semibold text-muted-foreground">
                           Game {idx + 1} of 4
                         </div>
-                        <h3 className="text-3xl font-bold">{game.title}</h3>
+                        <h3 className="text-3xl font-bold text-foreground">{game.title}</h3>
                         <p className="text-lg text-muted-foreground">{game.subtitle}</p>
                       </div>
                     </div>
                     
-                    <p className="mb-6 text-lg leading-relaxed">{game.description}</p>
+                    <p className="mb-6 text-lg leading-relaxed text-foreground">{game.description}</p>
                     
                     <div className="mb-6 rounded-lg border border-border/50 bg-muted/30 p-6 hover-glow">
-                      <h4 className="mb-4 font-semibold text-lg">Key Learnings:</h4>
+                      <h4 className="mb-4 font-semibold text-lg text-foreground">Key Learnings:</h4>
                       <ul className="space-y-3">
                         {game.learnings.map((learning, idx) => (
                           <li key={idx} className="flex items-start gap-3">
                             <span className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${game.color.replace('text-', 'bg-')} animate-pulse`} />
-                            <span className="text-base">{learning}</span>
+                            <span className="text-base text-foreground">{learning}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                     
                     <div className={`rounded-lg border ${game.color.replace('text-', 'border-')}/40 bg-gradient-to-r from-background/50 to-${game.color.replace('text-', 'bg-')}/5 p-5`}>
-                      <p className="font-mono text-sm font-semibold">{game.mapping}</p>
+                      <p className="font-mono text-sm font-semibold text-foreground">{game.mapping}</p>
                     </div>
                   </Card>
                 </CarouselItem>

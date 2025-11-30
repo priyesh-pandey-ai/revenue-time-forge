@@ -103,11 +103,11 @@ const FrameworksSection = () => {
               <Card className="border-border/50 bg-card p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.3)] hover:shadow-[0_0_70px_rgba(139,92,246,0.2)] transition-all duration-500">
                 <div className="mb-6">
                   <framework.icon className={`mb-4 h-12 w-12 ${framework.color}`} />
-                  <h3 className="mb-2 text-3xl font-bold">{framework.title}</h3>
+                  <h3 className="mb-2 text-3xl font-bold text-foreground">{framework.title}</h3>
                   <p className="text-lg text-muted-foreground">{framework.subtitle}</p>
                 </div>
                 
-                <p className="mb-8 text-lg leading-relaxed">{framework.description}</p>
+                <p className="mb-8 text-lg leading-relaxed text-foreground">{framework.description}</p>
                 
                 <div className="space-y-4">
                   {framework.elements.map((element, idx) => (
@@ -119,7 +119,7 @@ const FrameworksSection = () => {
                         {element.letter}
                       </div>
                       <div>
-                        <h4 className="mb-1 font-semibold">{element.name}</h4>
+                        <h4 className="mb-1 font-semibold text-foreground">{element.name}</h4>
                         <p className="text-sm text-muted-foreground">{element.detail}</p>
                       </div>
                     </div>
@@ -130,8 +130,8 @@ const FrameworksSection = () => {
           ))}
         </Tabs>
         
-        <Card className={`mt-12 border-neon-blue/30 bg-secondary p-8 shadow-[0_0_50px_rgba(56,189,248,0.1)] transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.4s" }}>
-          <h3 className="mb-6 text-2xl font-bold text-center">The CRAP Visual Design Framework</h3>
+        <Card className={`mt-12 border-neon-blue/30 bg-card p-8 shadow-[0_0_50px_rgba(56,189,248,0.1)] transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.4s" }}>
+          <h3 className="mb-6 text-2xl font-bold text-center text-foreground">The CRAP Visual Design Framework</h3>
           <div className="mb-6 overflow-hidden rounded-lg">
             <img 
               src={crapFramework} 
