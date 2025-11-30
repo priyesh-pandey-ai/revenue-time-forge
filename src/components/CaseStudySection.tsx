@@ -1,7 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Award, TrendingUp, Users, AlertCircle } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const CaseStudySection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const teamResults = [
     {
       rank: "1st Place",
@@ -43,9 +45,10 @@ const CaseStudySection = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container px-6">
-        <div className="mb-12 text-center">
+    <section className="py-20 bg-muted/30 relative overflow-hidden">
+      <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-amber/10 blur-[150px] animate-pulse" />
+      <div className="container px-6 relative z-10" ref={ref}>
+        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-4 text-4xl font-bold md:text-5xl">
             Real <span className="text-amber">Case Study</span> Analysis
           </h2>
@@ -54,24 +57,24 @@ const CaseStudySection = () => {
           </p>
         </div>
         
-        <div className="mb-12">
+        <div className={`mb-12 transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
           <h3 className="mb-6 text-2xl font-bold text-center">Industry Challenges Addressed</h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {industryInsights.map((insight, idx) => (
-              <Card key={idx} className="border-border/50 p-6">
-                <h4 className="mb-2 font-semibold text-amber">{insight.challenge}</h4>
+              <Card key={idx} className="border-border/50 p-6 hover-glow">
+                <h4 className="mb-2 font-semibold text-amber text-lg">{insight.challenge}</h4>
                 <p className="text-sm text-muted-foreground">{insight.impact}</p>
               </Card>
             ))}
           </div>
         </div>
         
-        <div className="mb-12">
+        <div className={`mb-12 transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
           <h3 className="mb-6 text-2xl font-bold text-center">Team Performance Rankings</h3>
           <div className="grid gap-6 md:grid-cols-3">
             {teamResults.map((result, idx) => (
-              <Card key={idx} className="border-border/50 p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
-                <result.icon className={`mb-4 h-10 w-10 ${result.color}`} />
+              <Card key={idx} className="border-border/50 p-6 hover-glow">
+                <result.icon className={`mb-4 h-12 w-12 ${result.color} animate-float`} />
                 <div className="mb-2 text-sm font-semibold text-muted-foreground">{result.rank}</div>
                 <h4 className="mb-3 text-xl font-bold">{result.team}</h4>
                 <p className="text-sm text-muted-foreground">{result.strengths}</p>
@@ -80,7 +83,7 @@ const CaseStudySection = () => {
           </div>
         </div>
         
-        <Card className="border-destructive/30 bg-card p-8">
+        <Card className={`border-destructive/30 bg-card p-8 transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.3s" }}>
           <div className="mb-6 flex items-center gap-3">
             <AlertCircle className="h-8 w-8 text-destructive" />
             <h3 className="text-2xl font-bold">Common Pitfalls to Avoid</h3>

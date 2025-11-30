@@ -1,11 +1,15 @@
 import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Gamepad2, Users, TrendingUp, Presentation } from "lucide-react";
 import gameBoard from "@/assets/game-board.jpg";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 const GamesSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const autoplayPlugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
+  
   const games = [
     {
       id: "game1",
@@ -85,57 +89,67 @@ const GamesSection = () => {
       <div className="container relative z-10 px-6" ref={ref}>
         <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-4 text-4xl font-bold text-secondary-foreground md:text-5xl">
-            The Four <span className="text-neon-blue glow-neon-blue">CTMRL</span> Games
+            The Four <span className="text-gradient animate-glow">CTMRL</span> Games
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Gamified learning that transforms students into high-velocity revenue leaders
           </p>
         </div>
         
-        <Tabs defaultValue="game1" className={`w-full transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
-          <TabsList className="mb-8 grid w-full grid-cols-2 gap-4 bg-transparent lg:grid-cols-4">
-            {games.map((game, idx) => (
-              <TabsTrigger 
-                key={game.id} 
-                value={game.id}
-                className="data-[state=active]:bg-card data-[state=active]:text-card-foreground data-[state=active]:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 hover-scale"
-              >
-                <game.icon className="mr-2 h-4 w-4" />
-                Game {idx + 1}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        <div className={`transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
+          <Carousel
+            opts={{ loop: true }}
+            plugins={[autoplayPlugin.current]}
+            className="w-full"
+            onMouseEnter={() => autoplayPlugin.current.stop()}
+            onMouseLeave={() => autoplayPlugin.current.play()}
+          >
+            <CarouselContent>
+              {games.map((game, idx) => (
+                <CarouselItem key={game.id}>
+                  <Card className="border-border/50 bg-card p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.3)] hover-glow">
+                    <div className="mb-6 flex items-center gap-4">
+                      <game.icon className={`h-16 w-16 ${game.color} animate-float`} />
+                      <div>
+                        <div className="mb-2 text-sm font-mono font-semibold text-muted-foreground">
+                          Game {idx + 1} of 4
+                        </div>
+                        <h3 className="text-3xl font-bold">{game.title}</h3>
+                        <p className="text-lg text-muted-foreground">{game.subtitle}</p>
+                      </div>
+                    </div>
+                    
+                    <p className="mb-6 text-lg leading-relaxed">{game.description}</p>
+                    
+                    <div className="mb-6 rounded-lg border border-border/50 bg-muted/30 p-6 hover-glow">
+                      <h4 className="mb-4 font-semibold text-lg">Key Learnings:</h4>
+                      <ul className="space-y-3">
+                        {game.learnings.map((learning, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${game.color.replace('text-', 'bg-')} animate-pulse`} />
+                            <span className="text-base">{learning}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className={`rounded-lg border ${game.color.replace('text-', 'border-')}/40 bg-gradient-to-r from-background/50 to-${game.color.replace('text-', 'bg-')}/5 p-5`}>
+                      <p className="font-mono text-sm font-semibold">{game.mapping}</p>
+                    </div>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hover-glow" />
+            <CarouselNext className="hover-glow" />
+          </Carousel>
           
-          {games.map((game) => (
-            <TabsContent key={game.id} value={game.id} className="animate-fade-in">
-              <Card className="border-border/50 bg-card p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.3)] hover:shadow-[0_0_70px_rgba(139,92,246,0.2)] transition-all duration-500">
-                <div className="mb-6">
-                  <game.icon className={`mb-4 h-12 w-12 ${game.color} animate-fade-in`} />
-                  <h3 className="mb-2 text-3xl font-bold">{game.title}</h3>
-                  <p className="text-lg text-muted-foreground">{game.subtitle}</p>
-                </div>
-                
-                <p className="mb-6 text-lg leading-relaxed">{game.description}</p>
-                
-                <div className="mb-6 rounded-lg border border-border/50 bg-muted/30 p-6">
-                  <h4 className="mb-4 font-semibold">Key Learnings:</h4>
-                  <ul className="space-y-2">
-                    {game.learnings.map((learning, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className={`mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full ${game.color.replace('text-', 'bg-')}`} />
-                        <span>{learning}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className={`rounded-lg border ${game.color.replace('text-', 'border-')}/30 bg-background/50 p-4`}>
-                  <p className="font-mono text-sm font-semibold">{game.mapping}</p>
-                </div>
-              </Card>
-            </TabsContent>
-          ))}
-        </Tabs>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-muted-foreground italic">
+              Auto-scrolls every 5 seconds • Hover to pause • Click arrows to navigate
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

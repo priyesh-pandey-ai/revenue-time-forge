@@ -1,7 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Quote } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const IndustryInsights = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const insights = [
     {
       quote: "Hunting and farming teams require different mindsets.",
@@ -22,9 +24,10 @@ const IndustryInsights = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container px-6">
-        <div className="mb-12 text-center">
+    <section className="py-20 bg-background relative overflow-hidden">
+      <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-neon-blue/10 blur-[150px] animate-pulse" />
+      <div className="container px-6 relative z-10" ref={ref}>
+        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-4 text-4xl font-bold md:text-5xl">
             <span className="text-amber">Industry Expert</span> Insights
           </h2>
@@ -33,10 +36,10 @@ const IndustryInsights = () => {
           </p>
         </div>
         
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className={`grid gap-6 md:grid-cols-2 transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
           {insights.map((insight, idx) => (
-            <Card key={idx} className="border-border/50 p-8 transition-all duration-300 hover:border-amber/50 hover:shadow-lg">
-              <Quote className="mb-4 h-8 w-8 text-amber" />
+            <Card key={idx} className="border-border/50 p-8 hover-glow">
+              <Quote className="mb-4 h-10 w-10 text-amber animate-float" />
               <blockquote className="mb-4 text-lg font-medium leading-relaxed">
                 "{insight.quote}"
               </blockquote>
