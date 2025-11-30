@@ -23,13 +23,13 @@ const ClosingSection = () => {
       <div className="container relative px-6" ref={ref}>
         <Card className={`mx-auto max-w-4xl border-neon-blue/30 bg-card p-8 md:p-12 shadow-[0_0_100px_rgba(56,189,248,0.2)] transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
           <div className="mb-8 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-blue/30 bg-neon-blue/10 px-4 py-2 backdrop-blur-sm">
-              <Sparkles className="h-4 w-4 text-neon-blue animate-pulse" />
-              <span className="text-sm font-semibold text-neon-blue">Limited Seats Available</span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 backdrop-blur-sm">
+              <Sparkles className="h-4 w-4 text-primary animate-pulse" />
+              <span className="text-sm font-semibold text-primary">Limited Seats Available</span>
             </div>
             
-            <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              Your Time Machine <span className="text-neon-blue glow-neon-blue">Starts Here</span>
+            <h2 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
+              Your Time Machine <span className="text-gradient animate-glow">Starts Here</span>
             </h2>
             <p className="text-lg text-muted-foreground">My transformation through the CRUST framework</p>
           </div>
@@ -45,7 +45,7 @@ const ClosingSection = () => {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary transition-all group-hover:scale-110 group-hover:bg-primary/30">
                     {idx + 1}
                   </div>
-                  <h3 className="font-semibold">{point.phase}</h3>
+                  <h3 className="font-semibold text-foreground">{point.phase}</h3>
                 </div>
                 <p className="text-muted-foreground">{point.description}</p>
               </div>
@@ -54,21 +54,21 @@ const ClosingSection = () => {
           
           <div className={`mt-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.8s" }}>
             <div className="mb-6 rounded-lg border border-amber/30 bg-gradient-to-r from-amber/5 via-amber/10 to-amber/5 p-6 shadow-[0_0_30px_rgba(251,191,36,0.15)]">
-              <p className="text-xl font-bold">
+              <p className="text-xl font-bold text-foreground">
                 "If you want to think sharper, speak stronger, and lead revenue like a professional — your six-week time machine starts here."
               </p>
             </div>
             
             <Button 
               size="lg" 
-              className="group relative bg-neon-blue text-secondary hover:bg-neon-blue/90 shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:shadow-[0_0_60px_rgba(56,189,248,0.6)] transition-all duration-300 hover-scale"
+              variant="secondary"
+              className="group relative shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:shadow-[0_0_60px_rgba(56,189,248,0.6)] transition-all duration-300 hover-scale text-lg font-bold"
             >
               <span className="relative z-10 flex items-center">
                 <Mail className="mr-2 h-5 w-5" />
                 Enroll in CTMRL Today
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </span>
-              <div className="absolute inset-0 rounded-md bg-gradient-to-r from-neon-blue to-primary opacity-0 group-hover:opacity-100 blur transition-opacity" />
             </Button>
           </div>
         </Card>
