@@ -1,57 +1,81 @@
 import { Card } from "@/components/ui/card";
-import { CheckCircle2 } from "lucide-react";
+import { BrainCircuit, Activity, MessageSquare, ShieldCheck } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const ValueProposition = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const values = [
-    "The real psychology of B2B buying — stated, unstated, and unstateable needs",
-    "A deep understanding of the buying center (Broker, Party, Influencer mapping)",
-    "Skill in navigating objections, stalls, and loaded questions",
-    "Laser-sharp pitch structuring using the 8-step proposal model",
-    "Hands-on practice building business cases using waterfall visuals",
-    "The ability to read room energy, build rapport, and transition to business naturally",
-    "The 80/20 log-scale understanding of how B2B companies really grow",
-    "Actual revenue-leadership simulation through 4 high-stakes contests",
-    "A portfolio of practical storytelling tools (CRUST, MAYA, Zig Ziglar, reframing, etc.)",
-    "A personal transformation in confidence, articulation, and presence"
+
+  const reflexes = [
+    {
+      title: "Revenue Reflexes",
+      text: "Developing the instinct to read a room's temperature before a single word is spoken.",
+      icon: Activity
+    },
+    {
+      title: "The 'Unsaid' Radar",
+      text: "Hearing what isn't being said—the hesitation, the power play, the hidden objection.",
+      icon: BrainCircuit
+    },
+    {
+      title: "The Safe 'Yes'",
+      text: "Structuring pitches so that agreeing with you feels like the safest option in the room.",
+      icon: ShieldCheck
+    },
+    {
+      title: "Narrative Control",
+      text: "Holding the frame when the pressure mounts and the questions get loaded.",
+      icon: MessageSquare
+    }
   ];
 
   return (
-    <section id="value" className="relative py-20 bg-background overflow-hidden">
+    <section id="value" className="relative py-24 bg-background overflow-hidden">
       {/* Subtle grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-10" />
-      
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-5" />
+
       <div className="container relative px-6" ref={ref}>
-        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-            What <span className="text-primary glow-primary">CTMRL</span> Delivers
+        <div className={`mb-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="mb-6 text-4xl font-bold md:text-5xl tracking-tight">
+            Theory gives you a map. <br />
+            <span className="text-primary glow-primary">CTMRL puts you in the driver's seat.</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            This is not a theory class; it is a career accelerator.
+          <p className="mx-auto max-w-2xl text-xl text-muted-foreground leading-relaxed">
+            Most courses teach you the <em>concepts</em> of sales. This course builds the <strong>muscle memory</strong> required to lead.
           </p>
         </div>
-        
-        <Card className={`border-primary/20 bg-card p-8 md:p-12 shadow-[0_0_50px_rgba(139,92,246,0.1)] transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
-          <div className="grid gap-6 md:grid-cols-2">
-            {values.map((value, idx) => (
-              <div 
-                key={idx} 
-                className={`group flex gap-4 transition-all duration-500 hover:translate-x-2 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
-                style={{ animationDelay: `${0.3 + idx * 0.05}s` }}
-              >
-                <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-primary transition-all group-hover:scale-110 group-hover:text-neon-blue" />
-                <p className="text-card-foreground">{value}</p>
-              </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:gap-12 items-start">
+          <div className={`space-y-8 transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
+            <div className="relative pl-8 border-l-2 border-primary/30">
+              <h3 className="text-2xl font-bold text-foreground mb-4">The Student Problem</h3>
+              <p className="text-lg text-muted-foreground">
+                We spend years mastering finance, strategy, and operations. But when it comes to the most critical business function—convincing another human to trust you with their money—we're often flying blind.
+              </p>
+            </div>
+            <div className="relative pl-8 border-l-2 border-neon-blue/30">
+              <h3 className="text-2xl font-bold text-foreground mb-4">The CTMRL Solution</h3>
+              <p className="text-lg text-muted-foreground">
+                CTMRL bridges that gap not with lectures, but with <strong>simulations</strong>. It forces you to find your voice when your heart is racing and the stakes feel real.
+              </p>
+            </div>
+          </div>
+
+          <div className={`grid gap-4 transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.4s" }}>
+            {reflexes.map((item, idx) => (
+              <Card key={idx} className="group border-border/40 bg-card/50 p-6 hover:bg-card hover:border-primary/30 transition-all duration-300">
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 p-2 rounded-lg bg-primary/10 text-primary group-hover:text-neon-blue group-hover:bg-neon-blue/10 transition-colors">
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{item.title}</h4>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
-          
-          <div className="mt-12 rounded-lg border border-amber/30 bg-gradient-to-r from-amber/5 via-amber/10 to-amber/5 p-6 text-center shadow-[0_0_30px_rgba(251,191,36,0.1)]">
-            <p className="text-lg font-semibold text-foreground">
-              Revenue leadership is not taught in books — it is trained in the arena.
-            </p>
-          </div>
-        </Card>
+        </div>
       </div>
     </section>
   );

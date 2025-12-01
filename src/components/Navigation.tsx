@@ -34,7 +34,7 @@ const Navigation = () => {
         isScrolled ? "bg-secondary/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container flex items-center justify-between px-6 py-4">
+      <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-neon-blue to-primary" />
           <span className="font-mono text-xl font-bold text-secondary-foreground">CTMRL</span>
@@ -71,7 +71,7 @@ const Navigation = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="border-t border-border/50 bg-secondary/95 backdrop-blur-md md:hidden">
-          <div className="container px-6 py-4 space-y-4">
+          <div className="mx-auto w-full max-w-[1400px] px-6 py-4 space-y-4">
             {navItems.map((item) => (
               <button
                 key={item.href}

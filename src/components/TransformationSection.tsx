@@ -1,57 +1,67 @@
 import { Card } from "@/components/ui/card";
-import { Sparkles } from "lucide-react";
+import { ArrowUpCircle, UserCheck } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const TransformationSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const transformations = [
-    "I can now read clients with clarity and empathy",
-    "My objection handling improved: distinguish honest vs loaded",
-    "Pitching feels natural, structured, and purposeful",
-    "I know how to move the room from rapport → business → close",
-    "I think in B2B engines: product → market → messaging → leads → deals → deeds",
-    "I understand power law, log-scale revenue, and asymmetric impact",
-    "I now know how to shape my own reality — one-third work, one-third love, one-third delusion",
-    "I have twenty pivotal experiences crafted for interviews",
-    "My confidence, storytelling skills, and strategic thinking have skyrocketed"
+
+  const shifts = [
+    {
+      from: "Pitching Features",
+      to: "Solving Problems",
+      desc: "I stopped talking about what my product does and started talking about what my client needs."
+    },
+    {
+      from: "Fearing Objections",
+      to: "Inviting Scrutiny",
+      desc: "I realized that an objection isn't a 'no'; it's a request for more information. I learned to lean into the friction."
+    },
+    {
+      from: "Anxious Presenter",
+      to: "Confident Advisor",
+      desc: "My internal monologue switched from 'I hope they like me' to 'I know I can help them'."
+    }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/10 blur-[200px] animate-pulse" />
+    <section className="py-24 bg-background relative overflow-hidden">
       <div className="container px-6 relative z-10" ref={ref}>
-        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-semibold text-primary">Personal Journey</span>
-          </div>
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-            My <span className="text-primary">Personal</span> Transformation
+        <div className={`mb-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="mb-6 text-4xl font-bold md:text-5xl">
+            The <span className="text-primary">Version 2.0</span> Upgrade
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Real growth, measurable change, lasting impact
+            I walked in analyzing data. I walked out analyzing people. The shift wasn't subtle—it was a complete system reboot.
           </p>
         </div>
-        
-        <div className={`mx-auto max-w-4xl transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
-          <Card className="border-primary/30 bg-card p-8 md:p-12 hover-glow">
-            <div className="space-y-6">
-              {transformations.map((transformation, idx) => (
-                <div key={idx} className="flex gap-4 items-start">
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                    {idx + 1}
-                  </div>
-                  <p className="pt-1 text-lg leading-relaxed">{transformation}</p>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {shifts.map((shift, idx) => (
+            <Card key={idx} className={`relative overflow-hidden border-border/50 bg-card/50 p-8 transition-all duration-700 hover:-translate-y-2 hover:shadow-lg ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: `${0.1 + idx * 0.1}s` }}>
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                <ArrowUpCircle className="h-24 w-24 text-primary" />
+              </div>
+
+              <div className="relative z-10">
+                <div className="mb-6 flex items-center gap-3 text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                  <span>{shift.from}</span>
+                  <ArrowUpCircle className="h-4 w-4 text-primary animate-bounce" />
+                  <span className="text-primary">{shift.to}</span>
                 </div>
-              ))}
-            </div>
-            
-            <div className="mt-12 rounded-lg border border-neon-blue/20 bg-neon-blue/5 p-6 text-center">
-              <p className="text-xl font-semibold">
-                From uncertain to unstoppable — that's the CTMRL difference.
-              </p>
-            </div>
-          </Card>
+
+                <p className="text-lg font-medium leading-relaxed text-foreground">
+                  "{shift.desc}"
+                </p>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        <div className={`mt-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.4s" }}>
+          <div className="inline-flex items-center gap-2 rounded-full border border-neon-blue/30 bg-neon-blue/10 px-6 py-3">
+            <UserCheck className="h-5 w-5 text-neon-blue" />
+            <span className="font-semibold text-neon-blue">Status: Upgrade Complete</span>
+          </div>
         </div>
       </div>
     </section>

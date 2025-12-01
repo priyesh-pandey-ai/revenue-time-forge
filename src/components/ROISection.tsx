@@ -1,96 +1,59 @@
 import { Card } from "@/components/ui/card";
-import { TrendingUp, Brain, Target, Heart } from "lucide-react";
+import { TrendingUp, Briefcase, Award } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const ROISection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const tangibleROI = [
-    { icon: Brain, label: "Frameworks Applied", value: "8-step proposal model, CRUST, MAYA, waterfall visualization" },
-    { icon: Target, label: "Career Acceleration", value: "Interview-ready stories, leadership presence, strategic thinking" },
-    { icon: TrendingUp, label: "B2B Mechanics", value: "Power law understanding, log-scale revenue, buying center navigation" }
-  ];
-
-  const intangibleROI = [
-    "Self-belief and confidence",
-    "Personal intentionality",
-    "Ability to 'direct your energy'",
-    "Being memorable in high-stakes rooms",
-    "Emotional intelligence in business contexts"
-  ];
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
-      <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-amber/10 blur-[150px] animate-pulse" />
+    <section className="py-24 bg-muted/30 relative overflow-hidden">
       <div className="container px-6 relative z-10" ref={ref}>
-        <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-            <span className="text-amber">ROI</span> for Future Students
+        <div className={`mb-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="mb-6 text-4xl font-bold md:text-5xl">
+            The <span className="text-gradient animate-glow">Career Compounder</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Tangible skills and intangible transformations that compound over your career
+            This isn't just about getting a grade. It's about acquiring a toolkit that pays dividends for the rest of your career.
           </p>
         </div>
-        
-        <div className={`mb-12 grid gap-6 md:grid-cols-3 transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
-          {tangibleROI.map((item, idx) => (
-            <Card key={idx} className="border-border/50 p-6 hover-glow">
-              <item.icon className="mb-4 h-12 w-12 text-amber animate-float" />
-              <h3 className="mb-3 text-xl font-semibold">{item.label}</h3>
-              <p className="text-sm text-muted-foreground">{item.value}</p>
-            </Card>
-          ))}
-        </div>
-        
-        <Card className={`border-primary/20 bg-gradient-to-br from-card to-primary/5 p-8 md:p-12 transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div>
-              <h3 className="mb-6 flex items-center gap-2 text-2xl font-bold">
-                <TrendingUp className="h-6 w-6 text-amber" />
-                Tangible ROI
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber" />
-                  <span>Skills gained across 4 competitive games</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber" />
-                  <span>Industry-grade storytelling frameworks</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber" />
-                  <span>Portfolio of pivotal experiences for interviews</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber" />
-                  <span>Mentor-style personal feedback</span>
-                </li>
-              </ul>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          <Card className={`p-8 border-border/50 bg-card hover-glow transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
+            <div className="mb-6 p-4 rounded-full bg-primary/10 w-fit">
+              <TrendingUp className="h-8 w-8 text-primary" />
             </div>
-            
-            <div>
-              <h3 className="mb-6 flex items-center gap-2 text-2xl font-bold">
-                <Heart className="h-6 w-6 text-primary" />
-                Intangible ROI
-              </h3>
-              <ul className="space-y-3">
-                {intangibleROI.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-8 text-center">
-            <p className="text-lg font-medium">
-              The compounding effect of these skills and mindsets creates 
-              <span className="text-primary font-bold"> exponential career value</span>.
+            <h3 className="text-2xl font-bold mb-4">Immediate Impact</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Walk into your summer internship or final placement with the ability to understand the business model, not just the job description.
             </p>
-          </div>
-        </Card>
+          </Card>
+
+          <Card className={`p-8 border-border/50 bg-card hover-glow transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.2s" }}>
+            <div className="mb-6 p-4 rounded-full bg-neon-blue/10 w-fit">
+              <Briefcase className="h-8 w-8 text-neon-blue" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4">Career Velocity</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Revenue leaders get promoted faster. Why? Because they are the ones who bring the resources into the building.
+            </p>
+          </Card>
+
+          <Card className={`p-8 border-border/50 bg-card hover-glow transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.3s" }}>
+            <div className="mb-6 p-4 rounded-full bg-amber/10 w-fit">
+              <Award className="h-8 w-8 text-amber" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4">The "X" Factor</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Develop the "Gravitas" that makes people listen when you speak. It's an intangible asset with very tangible returns.
+            </p>
+          </Card>
+        </div>
+
+        <div className={`mt-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.4s" }}>
+          <p className="text-2xl font-bold text-foreground">
+            ROI = <span className="text-primary">Limitless</span>
+          </p>
+        </div>
       </div>
     </section>
   );

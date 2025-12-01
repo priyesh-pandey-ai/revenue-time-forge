@@ -7,11 +7,11 @@ const ClosingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   const storyPoints = [
-    { phase: "Context", description: "Entered with uncertainty about my ability to lead revenue conversations" },
-    { phase: "Remove", description: "Removed old narratives about sales being pushy or inauthentic" },
-    { phase: "Unusual", description: "A course that teaches through games, adrenaline, and industry realism" },
-    { phase: "Show", description: "How I changed — confidence, storytelling, presence, strategy, intentionality" },
-    { phase: "Twist", description: "Revenue leadership is not about selling — it's about shaping reality" }
+    { phase: "Context", description: "I walked into CTMRL unsure if I could ever captain a revenue engine. I had analysis, but not the time-machine instincts." },
+    { phase: "Remove", description: "Week 1 ripped out the story that sales = pushy. Professor Rastogi removed fluff and replaced it with CRUST, MAYA, and real B2B telemetry." },
+    { phase: "Unusual", description: "Where else do you play four games that mirror a revenue time machine — Cement-as-a-Service, Broker/Party/Influencer, Snakes & Ladders, and You've Got Talent?" },
+    { phase: "Show", description: "Now I can read rooms, build waterfall cases, choreograph pitches, and reframe objections while the class chants 'Connect → Convince → Convert'." },
+    { phase: "Twist", description: "The twist is realizing revenue leadership is about shaping time itself — accelerating deals, slowing churn, and bending careers forward." }
   ];
 
   return (
@@ -55,7 +55,7 @@ const ClosingSection = () => {
           <div className={`mt-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.8s" }}>
             <div className="mb-6 rounded-lg border border-amber/30 bg-gradient-to-r from-amber/5 via-amber/10 to-amber/5 p-6 shadow-[0_0_30px_rgba(251,191,36,0.15)]">
               <p className="text-xl font-bold text-foreground">
-                "If you want to think sharper, speak stronger, and lead revenue like a professional — your six-week time machine starts here."
+                "CTMRL is the time machine that lets you visit your future CRO self, take notes, and come back prepared."
               </p>
             </div>
             
@@ -66,7 +66,7 @@ const ClosingSection = () => {
             >
               <span className="relative z-10 flex items-center">
                 <Mail className="mr-2 h-5 w-5" />
-                Enroll in CTMRL Today
+                Step Into the Time Machine — Become a Revenue Leader
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </span>
             </Button>

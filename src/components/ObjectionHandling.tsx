@@ -6,12 +6,12 @@ const ObjectionHandling = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const objections = [
     {
-      objection: "This course seems too intense.",
-      response: "Intensity = transformation. Revenue leadership is intense by nature; the course simulates the exact environment you will face in real deals. If you want results that matter, you need training that challenges you."
+      objection: "This course seems intense.",
+      response: "Reframe (Game 3 playbook): Intensity = acceleration. The only way to become a revenue leader is to rehearse real B2B scenarios — 100-point allocation fights, beauty parade pitches, sniper Q&A. Redirect: every week gives you coach-style feedback so you can speed up safely."
     },
     {
-      objection: "I don't have a sales background.",
-      response: "Perfect — this course teaches persuasion from first principles, not sales tactics. Anyone who wants to lead, influence, or drive business outcomes can apply these frameworks. The students who benefit most often come from diverse backgrounds."
+      objection: "I'm not from sales.",
+      response: "Reframe (Game 2 tactics): Revenue leadership is a leadership skill, not a selling trick. We designed CTMRL for non-sales MBAs — consultants, product folks, operators — because Broker / Party / Influencer politics need strategic minds, not quota-chasing jargon."
     }
   ];
 

@@ -5,7 +5,6 @@ import ProfessorSection from "@/components/ProfessorSection";
 import FrameworksSection from "@/components/FrameworksSection";
 import IndustryInsights from "@/components/IndustryInsights";
 import GamesSection from "@/components/GamesSection";
-import CaseStudySection from "@/components/CaseStudySection";
 import TransformationSection from "@/components/TransformationSection";
 import ROISection from "@/components/ROISection";
 import ObjectionHandling from "@/components/ObjectionHandling";
@@ -23,7 +22,6 @@ const Index = () => {
         <FrameworksSection />
         <IndustryInsights />
         <GamesSection />
-        <CaseStudySection />
         <div id="transformation">
           <TransformationSection />
         </div>
