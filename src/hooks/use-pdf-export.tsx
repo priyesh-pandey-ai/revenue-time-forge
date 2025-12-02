@@ -8,50 +8,90 @@ export const usePdfExport = () => {
 
   const exportToPdf = useCallback(async () => {
     setIsExporting(true);
-    toast.info("Preparing document for export...");
+    toast.info("Preparing document for export... This may take a moment.");
 
     try {
-      // Find carousel containers and expand them
-      const carouselContainers = document.querySelectorAll('[data-embla-container]');
-      const originalStyles: Array<{ element: HTMLElement; style: string }> = [];
-
-      carouselContainers.forEach((container) => {
-        if (container instanceof HTMLElement) {
-          originalStyles.push({ element: container, style: container.style.cssText });
-          container.style.transform = 'none';
-          container.style.flexWrap = 'wrap';
-          container.style.gap = '1rem';
-        }
-      });
-
-      // Hide elements that shouldn't be in PDF
-      const elementsToHide = document.querySelectorAll('iframe, video, [data-carousel-prev], [data-carousel-next], nav');
-      elementsToHide.forEach((el) => {
-        if (el instanceof HTMLElement) {
-          originalStyles.push({ element: el, style: el.style.cssText });
-          el.style.display = 'none';
-        }
-      });
-
-      await new Promise(resolve => setTimeout(resolve, 300));
-
       const element = document.querySelector('main');
       if (!element) throw new Error("Could not find main content");
 
       const canvas = await html2canvas(element as HTMLElement, {
-        scale: 1.5,
+        scale: 2,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#0a0a0a',
+        backgroundColor: '#09090b',
         logging: false,
+        onclone: (clonedDoc) => {
+          const clonedMain = clonedDoc.querySelector('main');
+          if (!clonedMain) return;
+
+          // Force all text to be visible with solid colors
+          const allElements = clonedMain.querySelectorAll('*');
+          allElements.forEach((el) => {
+            if (el instanceof HTMLElement) {
+              const computed = window.getComputedStyle(el);
+              
+              // Remove problematic CSS that html2canvas can't handle
+              el.style.backdropFilter = 'none';
+              (el.style as unknown as Record<string, string>).webkitBackdropFilter = 'none';
+              el.style.animation = 'none';
+              el.style.transition = 'none';
+              
+              // Fix gradient text by making it solid
+              if (computed.backgroundClip === 'text' || el.style.webkitBackgroundClip === 'text') {
+                el.style.background = 'none';
+                el.style.backgroundClip = 'unset';
+                el.style.webkitBackgroundClip = 'unset';
+                el.style.color = '#a855f7'; // primary color
+              }
+
+              // Ensure text is visible
+              if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'P' || el.tagName === 'SPAN' || el.tagName === 'LI') {
+                if (computed.color === 'rgba(0, 0, 0, 0)' || computed.color === 'transparent') {
+                  el.style.color = '#fafafa';
+                }
+              }
+            }
+          });
+
+          // Hide videos/iframes and replace with placeholder
+          const iframes = clonedMain.querySelectorAll('iframe');
+          iframes.forEach((iframe) => {
+            const placeholder = clonedDoc.createElement('div');
+            placeholder.style.cssText = `
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #fafafa;
+              font-size: 18px;
+              font-weight: bold;
+              border-radius: 12px;
+            `;
+            placeholder.textContent = '📹 Video Content - Watch Online';
+            iframe.parentNode?.replaceChild(placeholder, iframe);
+          });
+
+          // Expand carousels to show all items
+          const carouselContainers = clonedMain.querySelectorAll('[class*="flex"][class*="gap"]');
+          carouselContainers.forEach((container) => {
+            if (container instanceof HTMLElement && container.style.transform) {
+              container.style.transform = 'none';
+            }
+          });
+
+          // Hide carousel navigation buttons
+          const navButtons = clonedMain.querySelectorAll('button[class*="CarouselPrevious"], button[class*="CarouselNext"]');
+          navButtons.forEach((btn) => {
+            if (btn instanceof HTMLElement) {
+              btn.style.display = 'none';
+            }
+          });
+        }
       });
 
-      // Restore original styles
-      originalStyles.forEach(({ element, style }) => {
-        element.style.cssText = style;
-      });
-
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = canvas.toDataURL('image/png', 1.0);
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
