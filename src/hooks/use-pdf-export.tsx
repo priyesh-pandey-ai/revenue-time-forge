@@ -3,19 +3,19 @@ import { toast } from "sonner";
 
 export const usePdfExport = () => {
   const exportToPdf = useCallback(() => {
-    toast.info("Opening print dialog... Use 'Save as PDF' option.");
+    toast.info("Opening print dialog... Select 'Save as PDF' as destination.");
     
-    // Add print class to body to trigger print styles
+    // Add print class to body
     document.body.classList.add('printing');
     
-    // Small delay to ensure styles are applied
+    // Trigger print
     setTimeout(() => {
       window.print();
       
-      // Remove print class after print dialog closes
-      setTimeout(() => {
+      // Remove class after dialog closes
+      window.addEventListener('afterprint', () => {
         document.body.classList.remove('printing');
-      }, 1000);
+      }, { once: true });
     }, 100);
   }, []);
 
