@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Users, Trophy, Sparkles } from "lucide-react";
+import { FileText, Zap, Users, Trophy, Sparkles } from "lucide-react";
 import groupPhoto from "@/assets/group-photo.jpg";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-
+import { usePdfExport } from "@/hooks/use-pdf-export";
 const HeroSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation(0.2);
-
+  const { exportToPdf, isExporting } = usePdfExport();
   const stats = [
     { icon: Trophy, value: "4", label: "High-Stakes Games", color: "text-neon-blue" },
     { icon: Zap, value: "6", label: "Weeks of Transformation", color: "text-amber" },
@@ -48,9 +48,14 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6">
-              <Button size="lg" className="group text-lg px-10 py-7 bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(139,92,246,0.4)] hover:shadow-[0_0_60px_rgba(139,92,246,0.6)] transition-all duration-300 rounded-full">
-                Read the Retrospective
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <Button 
+                size="lg" 
+                className="group text-lg px-10 py-7 bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(139,92,246,0.4)] hover:shadow-[0_0_60px_rgba(139,92,246,0.6)] transition-all duration-300 rounded-full"
+                onClick={exportToPdf}
+                disabled={isExporting}
+              >
+                {isExporting ? "Generating PDF..." : "View as a Document"}
+                <FileText className="ml-2 h-5 w-5 transition-transform group-hover:scale-110" />
               </Button>
             </div>
 
