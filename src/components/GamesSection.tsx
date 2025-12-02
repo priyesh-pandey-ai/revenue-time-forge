@@ -98,13 +98,13 @@ const GamesSection = () => {
           <Carousel
             opts={{ loop: true }}
             plugins={[autoplayPlugin.current]}
-            className="w-full"
+            className="w-full print-carousel"
             onMouseEnter={() => autoplayPlugin.current.stop()}
             onMouseLeave={() => autoplayPlugin.current.play()}
           >
-            <CarouselContent>
+            <CarouselContent className="print-carousel-content">
               {games.map((game, idx) => (
-                <CarouselItem key={game.id} className="md:basis-1/2 lg:basis-1/2 xl:basis-1/2 pl-6">
+                <CarouselItem key={game.id} className="md:basis-1/2 lg:basis-1/2 xl:basis-1/2 pl-6 print-carousel-item">
                   <Card className="h-full border-border/50 bg-card p-8 md:p-10 shadow-[0_0_50px_rgba(0,0,0,0.3)] hover-glow flex flex-col">
                     <div className="mb-6 flex items-start gap-4">
                       <div className={`p-3 rounded-xl bg-background border border-border/50 ${game.color} shadow-sm`}>
