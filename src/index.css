@@ -332,7 +332,8 @@
   .animate-pulse,
   .print\:hidden,
   [class*="CarouselPrevious"],
-  [class*="CarouselNext"] {
+  [class*="CarouselNext"],
+  button:not([role="tab"]) {
     display: none !important;
   }
 

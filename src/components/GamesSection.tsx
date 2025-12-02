@@ -150,7 +150,7 @@ const GamesSection = () => {
             </div>
           </Carousel>
 
-          {/* Grid layout for print view - shows all games */}
+          {/* Grid layout for print view - shows all games in a 2-column grid optimized for A4/Letter paper */}
           <div className="hidden print:grid print:grid-cols-2 print:gap-6">
             {games.map((game) => (
               <GameCard key={game.id} game={game} />
