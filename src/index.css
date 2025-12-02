@@ -295,49 +295,64 @@
 
 /* Print Styles for PDF Export */
 @media print {
+  /* Force color printing */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     color-adjust: exact !important;
   }
 
+  @page {
+    margin: 0.4in;
+    size: A4 portrait;
+  }
+
+  html {
+    font-size: 12px !important;
+  }
+
   html, body {
     background: #09090b !important;
     color: #fafafa !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 
+  /* Remove decorative backgrounds */
   body::before,
   body::after {
     display: none !important;
   }
 
-  /* Hide navigation and interactive elements */
+  /* Hide non-printable elements */
   nav,
-  .printing nav,
-  button[class*="Carousel"],
-  [data-carousel-prev],
-  [data-carousel-next],
+  button,
   iframe,
-  video {
+  video,
+  .animate-pulse,
+  [class*="CarouselPrevious"],
+  [class*="CarouselNext"] {
     display: none !important;
   }
 
-  /* Reset all animations */
+  /* Force visibility and remove all animations */
   *,
   *::before,
   *::after {
     animation: none !important;
+    animation-delay: 0s !important;
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
+    visibility: visible !important;
   }
 
-  /* Make gradient text solid for print */
+  /* Fix gradient text */
   .text-gradient,
   [class*="bg-clip-text"],
-  [class*="text-transparent"] {
+  .bg-clip-text,
+  [style*="background-clip: text"] {
     background: none !important;
     -webkit-background-clip: unset !important;
     background-clip: unset !important;
@@ -345,24 +360,53 @@
     color: #a855f7 !important;
   }
 
-  /* Ensure all text is visible */
+  /* Fix animated glow text */
+  .animate-glow {
+    box-shadow: none !important;
+  }
+
+  /* Text colors */
   h1, h2, h3, h4, h5, h6 {
     color: #fafafa !important;
     -webkit-text-fill-color: #fafafa !important;
+    page-break-after: avoid !important;
   }
 
-  .text-gradient h1,
-  .text-gradient h2,
-  .text-gradient span,
+  h1 span, h2 span, h3 span {
+    color: inherit !important;
+  }
+
+  /* Gradient text in headings */
   h1 .text-gradient,
   h2 .text-gradient,
-  span.text-gradient {
+  h1 span.text-gradient,
+  h2 span.text-gradient,
+  .text-gradient {
     -webkit-text-fill-color: #a855f7 !important;
     color: #a855f7 !important;
   }
 
-  p, span, li, div {
-    color: inherit !important;
+  /* Primary colored text */
+  .text-primary,
+  [class*="text-primary"] {
+    color: #38bdf8 !important;
+    -webkit-text-fill-color: #38bdf8 !important;
+  }
+
+  .text-neon-blue {
+    color: #38bdf8 !important;
+    -webkit-text-fill-color: #38bdf8 !important;
+  }
+
+  .text-amber {
+    color: #f59e0b !important;
+    -webkit-text-fill-color: #f59e0b !important;
+  }
+
+  p, li {
+    color: #fafafa !important;
+    orphans: 3 !important;
+    widows: 3 !important;
   }
 
   .text-muted-foreground {
@@ -375,119 +419,129 @@
     -webkit-text-fill-color: #fafafa !important;
   }
 
-  /* Section backgrounds */
+  /* Section styling */
   section {
     background-color: #09090b !important;
-    page-break-inside: avoid;
-    break-inside: avoid;
+    page-break-inside: auto !important;
+    padding: 1.5rem 0 !important;
   }
 
-  .bg-secondary {
-    background-color: #1c1c24 !important;
-  }
-
-  .bg-card {
+  .bg-secondary,
+  .bg-muted\/30 {
     background-color: #18181b !important;
   }
 
-  /* Cards styling */
+  /* Cards */
+  .bg-card,
+  [class*="bg-card"] {
+    background-color: #1c1c22 !important;
+  }
+
   [class*="Card"],
   .rounded-lg,
   .rounded-xl {
-    background-color: #18181b !important;
-    border-color: #27272a !important;
+    background-color: #1c1c22 !important;
+    border: 1px solid #27272a !important;
     box-shadow: none !important;
+    page-break-inside: avoid !important;
   }
 
-  /* Expand carousels to show all items */
+  /* CAROUSEL - Show all items */
   [class*="embla"],
-  [data-embla-container],
-  [class*="CarouselContent"] {
-    transform: none !important;
+  [class*="Carousel"] {
     overflow: visible !important;
   }
 
-  .printing [class*="CarouselContent"],
-  .printing [data-embla-container] {
+  [class*="CarouselContent"],
+  .print-carousel-content,
+  [data-embla-container] {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1.5rem !important;
+    gap: 1rem !important;
+    transform: none !important;
+    overflow: visible !important;
+    flex-wrap: wrap !important;
   }
 
-  .printing [class*="CarouselItem"] {
+  [class*="CarouselItem"],
+  .print-carousel-item {
     flex: none !important;
     width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
     padding-left: 0 !important;
+    page-break-inside: avoid !important;
   }
 
-  /* Page breaks */
-  section {
-    page-break-after: auto;
-  }
-
-  section:last-child {
-    page-break-after: avoid;
-  }
-
-  /* Remove blur effects */
+  /* Remove decorative elements */
   .blur-3xl,
   .blur-2xl,
   .blur-xl,
-  [class*="blur-"] {
-    filter: none !important;
+  .blur-lg,
+  .blur-md,
+  [class*="blur-"],
+  .absolute.rounded-full[class*="bg-"],
+  .animate-float {
     display: none !important;
+    visibility: hidden !important;
   }
 
-  /* Remove backdrop blur */
   [class*="backdrop-blur"] {
     backdrop-filter: none !important;
   }
 
-  /* Ensure images print */
+  /* Images */
   img {
     max-width: 100% !important;
-    page-break-inside: avoid;
+    page-break-inside: avoid !important;
+    display: block !important;
+  }
+
+  /* Grids */
+  .grid {
+    page-break-inside: avoid !important;
+  }
+
+  /* Icons */
+  svg {
+    color: inherit !important;
+    fill: currentColor !important;
   }
 
   /* Footer */
   footer {
-    page-break-before: auto;
+    page-break-before: auto !important;
+    margin-top: 2rem !important;
   }
 
-  /* Remove shadows for cleaner print */
-  [class*="shadow"] {
-    box-shadow: none !important;
-  }
-
-  /* Ensure proper margins */
-  @page {
-    margin: 0.5in;
-    size: A4;
-  }
-
+  /* Main content */
   main {
     padding-top: 0 !important;
   }
 
-  /* Make accordion content visible */
+  /* Container */
+  .container {
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Accordions */
   [data-state="closed"] {
     display: block !important;
     height: auto !important;
     overflow: visible !important;
   }
 
-  /* Specific carousel print styles */
-  .print-carousel-content {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-    transform: none !important;
+  /* Border colors */
+  [class*="border-"] {
+    border-color: #27272a !important;
   }
 
-  .print-carousel-item {
-    flex: none !important;
-    min-width: 100% !important;
-    padding-left: 0 !important;
-    page-break-inside: avoid !important;
+  /* Glow effects */
+  .glow-primary,
+  .glow-neon-blue,
+  .glow-amber,
+  [class*="glow-"] {
+    box-shadow: none !important;
   }
 }
