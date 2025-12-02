@@ -327,12 +327,13 @@
 
   /* Hide non-printable elements */
   nav,
-  button,
   iframe,
   video,
   .animate-pulse,
+  .print\:hidden,
   [class*="CarouselPrevious"],
-  [class*="CarouselNext"] {
+  [class*="CarouselNext"],
+  button:not([role="tab"]) {
     display: none !important;
   }
 
@@ -446,9 +447,32 @@
     page-break-inside: avoid !important;
   }
 
-  /* CAROUSEL - Show all items */
+  /* TABS - Show all tab contents in print mode */
+  [role="tablist"] {
+    display: none !important;
+  }
+
+  [role="tabpanel"] {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: static !important;
+    margin-bottom: 2rem !important;
+    page-break-inside: avoid !important;
+  }
+
+  [role="tabpanel"][data-state="inactive"] {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: static !important;
+    height: auto !important;
+  }
+
+  /* CAROUSEL - Show all items in a grid for print */
   [class*="embla"],
-  [class*="Carousel"] {
+  [class*="Carousel"],
+  .print-carousel {
     overflow: visible !important;
   }
 
@@ -543,5 +567,14 @@
   .glow-amber,
   [class*="glow-"] {
     box-shadow: none !important;
+  }
+
+  /* Print-specific utility classes */
+  .print\:block {
+    display: block !important;
+  }
+  
+  .print\:grid {
+    display: grid !important;
   }
 }
