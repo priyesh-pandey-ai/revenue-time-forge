@@ -10,10 +10,10 @@ const ROISection = () => {
       <div className="container px-6 relative z-10" ref={ref}>
         <div className={`mb-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-            The <span className="text-gradient animate-glow">Career Compounder</span>
+            ROI — <span className="text-gradient animate-glow">Skills I Use Daily Now</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            This isn't just about getting a grade. It's about acquiring a toolkit that pays dividends for the rest of your career.
+            Since CTMRL, I find myself asking before every conversation:
           </p>
         </div>
 
@@ -22,9 +22,9 @@ const ROISection = () => {
             <div className="mb-6 p-4 rounded-full bg-primary/10 w-fit">
               <TrendingUp className="h-8 w-8 text-primary" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Immediate Impact</h3>
+            <h3 className="text-2xl font-bold mb-4">The Need</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Walk into your summer internship or final placement with the ability to understand the business model, not just the job description.
+              "What is their stated, unstated, unstateable need?"
             </p>
           </Card>
 
@@ -32,9 +32,9 @@ const ROISection = () => {
             <div className="mb-6 p-4 rounded-full bg-neon-blue/10 w-fit">
               <Briefcase className="h-8 w-8 text-neon-blue" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Career Velocity</h3>
+            <h3 className="text-2xl font-bold mb-4">The Focus</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Revenue leaders get promoted faster. Why? Because they are the ones who bring the resources into the building.
+              "Where will their eye land first?" "Am I simplifying to the essence?"
             </p>
           </Card>
 
@@ -42,16 +42,19 @@ const ROISection = () => {
             <div className="mb-6 p-4 rounded-full bg-amber/10 w-fit">
               <Award className="h-8 w-8 text-amber" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">The "X" Factor</h3>
+            <h3 className="text-2xl font-bold mb-4">The Hook</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Develop the "Gravitas" that makes people listen when you speak. It's an intangible asset with very tangible returns.
+              "Does my story have a hook?"
             </p>
           </Card>
         </div>
 
         <div className={`mt-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.4s" }}>
+          <p className="text-xl text-muted-foreground mb-4">
+            These skills show up in: interviews, presentations, pitches, client calls, resume writing, elevator pitches, cold outreach, networking — everywhere.
+          </p>
           <p className="text-2xl font-bold text-foreground">
-            ROI = <span className="text-primary">Limitless</span>
+            ROI isn't theoretical. <span className="text-primary">It's immediate, practical, and career-defining.</span>
           </p>
         </div>
       </div>

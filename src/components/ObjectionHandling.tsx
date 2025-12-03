@@ -6,12 +6,12 @@ const ObjectionHandling = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const objections = [
     {
-      objection: "This course seems intense.",
-      response: "Reframe (Game 3 playbook): Intensity = acceleration. The only way to become a revenue leader is to rehearse real B2B scenarios — 100-point allocation fights, beauty parade pitches, sniper Q&A. Redirect: every week gives you coach-style feedback so you can speed up safely."
+      objection: "This course seems too intense.",
+      response: "It is. And that's the point. Intensity is the simulation of the real world — but in a safer, coached environment."
     },
     {
-      objection: "I'm not from sales.",
-      response: "Reframe (Game 2 tactics): Revenue leadership is a leadership skill, not a selling trick. We designed CTMRL for non-sales MBAs — consultants, product folks, operators — because Broker / Party / Influencer politics need strategic minds, not quota-chasing jargon."
+      objection: "I'm not a sales person.",
+      response: "Perfect. This course doesn't make you a salesperson. It makes you someone people want to follow, trust, and bet on — in any career."
     }
   ];
 
@@ -21,13 +21,13 @@ const ObjectionHandling = () => {
       <div className="container px-6 relative z-10" ref={ref}>
         <div className={`mb-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-            Common <span className="text-neon-blue">Questions</span> Answered
+            Common <span className="text-neon-blue">Questions</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Reframing concerns with honest, practical responses
+            Objection Handling — Demonstrated the CTMRL Way
           </p>
         </div>
-        
+
         <div className={`mx-auto max-w-4xl space-y-6 transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: "0.1s" }}>
           {objections.map((item, idx) => (
             <Card key={idx} className="border-border/50 overflow-hidden hover-glow">
@@ -40,7 +40,7 @@ const ObjectionHandling = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-card p-6">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-6 w-6 flex-shrink-0 text-neon-blue" />
@@ -53,7 +53,7 @@ const ObjectionHandling = () => {
             </Card>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
           <p className="text-lg text-muted-foreground italic">
             Using reframing and redirecting tactics learned in the course to address real concerns

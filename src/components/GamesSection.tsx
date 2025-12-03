@@ -44,58 +44,58 @@ const games = [
   {
     id: "game1",
     icon: Target,
-    title: "Arena 1: The Product Bet",
-    subtitle: "Differentiation & Messaging",
-    description: "We were given a commodity (cement) and told to make it premium. It wasn't about features; it was about finding the one story that a buyer would pay extra for.",
+    title: "Cement-as-a-Service",
+    subtitle: "The Week I Failed",
+    description: "I played the revenue leader, and the deal didn't go the way I wanted. But the moment that changed me came from being the observer next round. Watching my classmates, I understood: Tone changes trust. Phrasing changes power. Preparation changes destiny.",
     learnings: [
-      "Learning that 'better' is subjective, but 'different' is profitable.",
-      "The pain of seeing your 'perfect' pitch fall flat because you missed the client's actual problem.",
-      "Realizing that if you can't explain it simply, you can't sell it."
+      "Tone changes trust.",
+      "Phrasing changes power.",
+      "Preparation changes destiny."
     ],
     color: "text-primary",
-    phase: "Differentiation"
+    phase: "Simulation"
   },
   {
     id: "game2",
     icon: Swords,
-    title: "Arena 2: The Power Map",
-    subtitle: "Stakeholder Management",
-    description: "A detective game where we had to figure out who actually held the keys to the budget. Spoiler: It's rarely the person doing the talking.",
+    title: "Broker Hain Ya Party??",
+    subtitle: "The Harsh Truth",
+    description: "By Week 3, this game forced me to accept a harsh truth: I was building rapport wrong. I couldn't follow FORD properly. I missed cues. I jumped too quickly into business. That failure became a turning point.",
     learnings: [
-      "Distinguishing between the 'Cheerleader' (who loves you but can't buy) and the 'Skeptic' (who signs the check).",
-      "Navigating office politics without getting caught in the crossfire.",
-      "The art of asking questions that reveal the hidden org chart."
+      "I was building rapport wrong.",
+      "I couldn't follow FORD properly.",
+      "I jumped too quickly into business."
     ],
     color: "text-neon-blue",
-    phase: "Discovery"
+    phase: "Rapport"
   },
   {
     id: "game3",
     icon: Dice5,
-    title: "Arena 3: The Boardroom",
-    subtitle: "Business Case & Negotiation",
-    description: "We rolled the dice—literally—to simulate market shifts. Then we had to convince a skeptical board that our deal was still worth saving.",
+    title: "Snakes & Ladders",
+    subtitle: "Leadership Mirror",
+    description: "A game disguised as a leadership mirror. Every dice throw represented speed of execution — not luck. Prof had secretly wired the game to teach us that in business, speed creates opportunity, and clarity accelerates movement.",
     learnings: [
-      "Building a business case that survives when the market crashes.",
-      "Handling objections not with defense, but with data.",
-      "Learning that 'No' is just the start of the real negotiation."
+      "Speed creates opportunity.",
+      "Clarity accelerates movement.",
+      "Every dice throw represented speed of execution — not luck."
     ],
     color: "text-amber",
-    phase: "Negotiation"
+    phase: "Execution"
   },
   {
     id: "game4",
     icon: Mic2,
-    title: "Arena 4: The Spotlight",
-    subtitle: "The Final Pitch",
-    description: "The 'Beauty Parade'. Bright lights, harsh judges, and 12 minutes to win it all. This was the culmination of every lesson, delivered under maximum pressure.",
+    title: "The Beauty Parade",
+    subtitle: "Pressure Cooker",
+    description: "These weren't games. These were simulations of pressure, teaching us how to think while the clock is running. The culmination of every lesson, delivered under maximum pressure.",
     learnings: [
-      "Commanding the room with silence as much as with words.",
-      "The importance of choreography: knowing exactly when to hand off to your teammate.",
-      "Feeling the difference between a 'presentation' and a 'performance'."
+      "Thinking while the clock is running.",
+      "Simulations of pressure.",
+      "From presentation to performance."
     ],
     color: "text-destructive",
-    phase: "Closing"
+    phase: "Pressure"
   }
 ];
 
@@ -121,10 +121,10 @@ const GamesSection = () => {
       <div className="container relative z-10 px-6" ref={ref}>
         <div className={`mb-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
-            The Revenue <span className="text-gradient animate-glow">Dojo</span>
+            Gamified Learning — <span className="text-gradient animate-glow">Told Through Failure</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Four distinct arenas. Zero safety nets. This is where we practiced until the movements became instinct.
+            Told Through the Week I Failed, Recovered, and Evolved
           </p>
         </div>
 

@@ -39,10 +39,13 @@ const ProfessorSection = () => {
                 He sets the stage, lights the fuse, and watches you <span className="text-amber">evolve</span>.
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                The method is simple but terrifying: introduce a concept, then immediately throw you into a high-stakes simulation where you <em>will</em> fail if you rely on theory alone.
+                There was a moment in Week 5 that I will never forget. My group had just finished our pitch in the "Beauty Parade," and we knew — we knew — it was bad.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                It's not about memorizing frameworks. It's about that moment of panic when a "client" shuts you down, and you have to find the courage to pivot, connect, and recover.
+                Prof didn't scold us. He took our deck, paused, and said: "Let me show you how your audience actually sees this." And then slide by slide, he tore it down — fonts, alignment, contrast, ordering, eye movement, even the psychology of where attention lands first.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                That one teardown taught me more about communication than all my previous presentations combined. He was coaching us in real time — not on slides, but on thinking. On clarity. On influence.
               </p>
             </div>
 
@@ -51,15 +54,15 @@ const ProfessorSection = () => {
                 <Clapperboard className="h-6 w-6 text-neon-blue mt-1" />
                 <div>
                   <h4 className="font-bold text-foreground">The "Improv" Factor</h4>
-                  <p className="text-sm text-muted-foreground">Every class is unscripted. You learn to think on your feet because the script <em>will</em> change.</p>
+                  <p className="text-sm text-muted-foreground">Prof doesn't teach content. He teaches what excellence feels like. His energy can carry an entire class even at 9:30 PM.</p>
                 </div>
               </Card>
 
               <Card className="border-amber/30 bg-secondary/50 p-5 flex items-start gap-4">
                 <Trophy className="h-6 w-6 text-amber mt-1" />
                 <div>
-                  <h4 className="font-bold text-foreground">The Dhaba Dinner</h4>
-                  <p className="text-sm text-muted-foreground">The ultimate prize. It's not just food; it's the edible proof that you survived the arena and came out on top.</p>
+                  <h4 className="font-bold text-foreground">Mental Wiring</h4>
+                  <p className="text-sm text-muted-foreground">His metaphors stay in your head forever. His insistence on structure becomes part of your mental wiring.</p>
                 </div>
               </Card>
             </div>

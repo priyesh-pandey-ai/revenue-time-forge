@@ -6,18 +6,18 @@ const IndustryInsights = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const insights = [
     {
-      title: "The Reality Check",
-      desc: "Guest speakers didn't come to lecture. They came to audit. They dissected our pitches with the same rigor they use for million-dollar deals.",
+      title: "The Client's Perspective",
+      desc: "In Week 2, Srikanth Iyengar said something simple: \"Do what is right for the client.\" That single line reframed selling for me. Selling wasn't performance. It was integrity plus diagnosis.",
       icon: Microscope
     },
     {
-      title: "War Room Stories",
-      desc: "We heard the unvarnished truth about sales—the failures, the 'almosts', and the grit required to close, straight from the people in the arena.",
+      title: "Top-Tier Validation",
+      desc: "In Week 5, Sukumar's session felt like the corporate world saying: \"Everything you're learning here? This is exactly how we do it at the top.\"",
       icon: Quote
     },
     {
-      title: "Live Fire Exercises",
-      desc: "They didn't just watch; they participated. Trying to sell to a real industry veteran is very different from selling to a classmate.",
+      title: "Real Wisdom",
+      desc: "Real leaders entered our classroom every week — people with scars, wins, failures, and wisdom textbooks will never have.",
       icon: Target
     }
   ];
@@ -28,10 +28,10 @@ const IndustryInsights = () => {
       <div className="container px-6 relative z-10" ref={ref}>
         <div className={`mb-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-            Frontline <span className="text-amber">Intelligence</span>
+            Industry Experts — <span className="text-amber">How My World Expanded</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            No textbooks. No theories. Just direct downloads from the people who carry the quota.
+            Real leaders entered our classroom every week — people with scars, wins, failures, and wisdom textbooks will never have.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ const IndustryInsights = () => {
         <div className="mt-16 text-center max-w-3xl mx-auto">
           <div className="p-8 rounded-2xl bg-gradient-to-br from-secondary/50 to-background border border-border/50">
             <p className="text-xl font-medium leading-relaxed italic text-foreground/90">
-              "The biggest takeaway wasn't a framework. It was realizing that sales isn't about slick tricks; it's about deep empathy, rigorous preparation, and the courage to ask the hard questions."
+              "Do what is right for the client." — Srikanth Iyengar
             </p>
           </div>
         </div>

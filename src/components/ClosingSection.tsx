@@ -7,11 +7,11 @@ const ClosingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   const storyPoints = [
-    { phase: "Context", description: "I walked into CTMRL unsure if I could ever captain a revenue engine. I had analysis, but not the time-machine instincts." },
-    { phase: "Remove", description: "Week 1 ripped out the story that sales = pushy. Professor Rastogi removed fluff and replaced it with CRUST, MAYA, and real B2B telemetry." },
-    { phase: "Unusual", description: "Where else do you play four games that mirror a revenue time machine — Cement-as-a-Service, Broker/Party/Influencer, Snakes & Ladders, and You've Got Talent?" },
-    { phase: "Show", description: "Now I can read rooms, build waterfall cases, choreograph pitches, and reframe objections while the class chants 'Connect → Convince → Convert'." },
-    { phase: "Twist", description: "The twist is realizing revenue leadership is about shaping time itself — accelerating deals, slowing churn, and bending careers forward." }
+    { phase: "Think", description: "It teaches you how to think sharper." },
+    { phase: "Influence", description: "It teaches you how to influence deeper." },
+    { phase: "Communicate", description: "It teaches you how to communicate powerfully." },
+    { phase: "Trust", description: "It teaches you how to build trust that compounds." },
+    { phase: "Shape", description: "It teaches you how to shape the future you want to live in." }
   ];
 
   return (
@@ -19,7 +19,7 @@ const ClosingSection = () => {
       {/* Glowing background elements */}
       <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary/20 blur-[150px] animate-pulse" />
       <div className="absolute bottom-20 right-1/4 h-96 w-96 rounded-full bg-neon-blue/20 blur-[150px] animate-pulse" style={{ animationDelay: "1s" }} />
-      
+
       <div className="container relative px-6" ref={ref}>
         <Card className={`mx-auto max-w-4xl border-neon-blue/30 bg-card p-8 md:p-12 shadow-[0_0_100px_rgba(56,189,248,0.2)] transition-all duration-700 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
           <div className="mb-8 text-center">
@@ -27,17 +27,17 @@ const ClosingSection = () => {
               <Sparkles className="h-4 w-4 text-primary animate-pulse" />
               <span className="text-sm font-semibold text-primary">Limited Seats Available</span>
             </div>
-            
+
             <h2 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
-              Your Time Machine <span className="text-gradient animate-glow">Starts Here</span>
+              Final Close: <span className="text-gradient animate-glow">Why You Must Take CTMRL</span>
             </h2>
-            <p className="text-lg text-muted-foreground">My transformation through the CRUST framework</p>
+            <p className="text-lg text-muted-foreground">If you want a course that changes your GPA, take something else. If you want a course that changes your trajectory, take CTMRL.</p>
           </div>
-          
+
           <div className="space-y-6">
             {storyPoints.map((point, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`group rounded-lg border border-border/50 bg-muted/30 p-6 transition-all duration-500 hover:border-primary/50 hover:bg-muted/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)] hover-scale ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
                 style={{ animationDelay: `${0.2 + idx * 0.1}s` }}
               >
@@ -51,16 +51,19 @@ const ClosingSection = () => {
               </div>
             ))}
           </div>
-          
+
           <div className={`mt-12 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: "0.8s" }}>
             <div className="mb-6 rounded-lg border border-amber/30 bg-gradient-to-r from-amber/5 via-amber/10 to-amber/5 p-6 shadow-[0_0_30px_rgba(251,191,36,0.15)]">
               <p className="text-xl font-bold text-foreground">
-                "CTMRL is the time machine that lets you visit your future CRO self, take notes, and come back prepared."
+                "Extraordinary things need 1/3 delusion." — The idea that became my new north star.
+              </p>
+              <p className="text-lg text-muted-foreground mt-2">
+                I left this course wanting not just to succeed, but to shape my own reality.
               </p>
             </div>
-            
-            <Button 
-              size="lg" 
+
+            <Button
+              size="lg"
               variant="secondary"
               className="group relative shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:shadow-[0_0_60px_rgba(56,189,248,0.6)] transition-all duration-300 hover-scale text-lg font-bold"
             >

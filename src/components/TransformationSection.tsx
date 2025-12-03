@@ -7,19 +7,19 @@ const TransformationSection = () => {
 
   const shifts = [
     {
-      from: "Pitching Features",
-      to: "Solving Problems",
-      desc: "I stopped talking about what my product does and started talking about what my client needs."
+      from: "Communication as 'Soft Skill'",
+      to: "Core Leadership Competency",
+      desc: "Before CTMRL, I thought communication was a 'soft skill.' Now I know it is a core leadership competency."
     },
     {
-      from: "Fearing Objections",
-      to: "Inviting Scrutiny",
-      desc: "I realized that an objection isn't a 'no'; it's a request for more information. I learned to lean into the friction."
+      from: "Pitching = Slides",
+      to: "Diagnosis + Structure",
+      desc: "Before CTMRL, I thought pitching was about slides. Now I know it is about diagnosis, structure, and narrative control."
     },
     {
-      from: "Anxious Presenter",
-      to: "Confident Advisor",
-      desc: "My internal monologue switched from 'I hope they like me' to 'I know I can help them'."
+      from: "Influence = Charisma",
+      to: "Presence = Clarity + Prep",
+      desc: "Before CTMRL, I thought influence was charisma. Now I know it is presence built from clarity + empathy + preparation."
     }
   ];
 
@@ -28,10 +28,10 @@ const TransformationSection = () => {
       <div className="container px-6 relative z-10" ref={ref}>
         <div className={`mb-16 text-center transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-            The <span className="text-primary">Version 2.0</span> Upgrade
+            Student Transformation — <span className="text-primary">My Before/After Story</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            I walked in analyzing data. I walked out analyzing people. The shift wasn't subtle—it was a complete system reboot.
+            Week 6 changed my understanding of careers entirely. The power laws, the 80/20 chart, the compounding of trust — I realised why some careers accelerate and others stagnate.
           </p>
         </div>
 
