@@ -62,6 +62,12 @@ This project is built with:
 
 ## How can I deploy this project?
 
+**GitHub Pages (Recommended)**
+
+This project is configured for automatic deployment to GitHub Pages. See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
+
+**Lovable**
+
 Simply open [Lovable](https://lovable.dev/projects/e1d7bb28-764e-4d00-8594-a8dad7811800) and click on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
