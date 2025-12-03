@@ -20,24 +20,11 @@ The GitHub Actions workflow will automatically run when you merge to `main`. You
 
 ## Step 3: Access Your Site
 
-Once the deployment is complete, your site will be accessible at:
+Once the deployment is complete, the GitHub Pages URL will be visible in:
+- Settings → Pages (under "Your site is live at...")
+- The workflow run in the Actions tab
 
-```
-https://ctmrlbypriyesh.github.io/revenue-time-forge/
-```
-
-**Note**: The URL format will be:
-- For user/organization pages: `https://username.github.io/repository-name/`
-- Based on the requirement "ctmrlbypriyesh.github.xxxx", if you want a custom subdomain, you'll need to set up a GitHub organization named "ctmrlbypriyesh" or use a custom domain.
-
-## Alternative: Custom Domain Setup
-
-If you want to use a custom domain like `ctmrlbypriyesh.github.io` as the main domain:
-
-1. Create a GitHub organization named "ctmrlbypriyesh"
-2. Create a repository named "ctmrlbypriyesh.github.io" (exact name)
-3. Transfer this repository's content there
-4. The site will be available at `https://ctmrlbypriyesh.github.io/`
+The exact URL will be provided by GitHub Pages based on your repository configuration.
 
 ## Troubleshooting
 
