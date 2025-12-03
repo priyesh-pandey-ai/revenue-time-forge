@@ -7,7 +7,7 @@ This project is configured to automatically deploy to GitHub Pages.
 The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
 
 ### GitHub Pages URL
-Once deployed, the site will be accessible at the URL provided by GitHub Pages (visible in Settings → Pages after deployment).
+Once deployed, the site will be accessible at: https://priyesh-pandey-ai.github.io/revenue-time-forge/
 
 ## Setup Instructions
 
@@ -42,5 +42,5 @@ npm run preview
 ## Configuration
 
 - The deployment is configured in `.github/workflows/deploy.yml`
-- The base path is set to "/" for root-level hosting in `vite.config.ts`
-- The router is configured in `src/App.tsx`
+- The base path is set to "/revenue-time-forge/" for GitHub Pages project site hosting in `vite.config.ts`
+- The router basename is configured to "/revenue-time-forge" in `src/App.tsx`
